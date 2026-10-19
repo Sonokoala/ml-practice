@@ -1,0 +1,11 @@
+services:
+  jupyter:
+    build: .
+    ports:
+      # Bound to localhost only, because JupyterLab runs without a token.
+      - "127.0.0.1:8888:8888"
+    volumes:
+      - ./:/work
+    environment:
+      # Put NEWSAPI_KEY=... in a .env file next to this file (it is git-ignored).
+      NEWSAPI_KEY: ${NEWSAPI_KEY:-}
